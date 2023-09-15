@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo">
+    <meta name="keywords" content="SSR节点搭建, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo</title>
+    <title>SSR节点搭建 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -266,12 +266,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">SSR节点搭建</h1>
                 </div>
             </div>
         </div>
@@ -457,7 +457,7 @@
 <h5 id="3-4-4-将SSR服务加到开机启动系列，并启动它。-拷贝、粘贴执行下面代码框里的命令"><a href="#3-4-4-将SSR服务加到开机启动系列，并启动它。-拷贝、粘贴执行下面代码框里的命令" class="headerlink" title="3.4.4 将SSR服务加到开机启动系列，并启动它。 拷贝、粘贴执行下面代码框里的命令"></a>3.4.4 将SSR服务加到开机启动系列，并启动它。 拷贝、粘贴执行下面代码框里的命令</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable shadowsocksr</span><br><span class="line">sudo systemctl start shadowsocksr</span><br></pre></td></tr></table></figure>
 <p>屏幕会提示Created symlink…..</p>
 <p>现在，SSR服务器已经搭建完了，接下来要开启防火墙。</p>
-<h4 id="4-其他设置。"><a href="#4-其他设置。" class="headerlink" title="4. 其他设置。"></a>4. 其他设置。</h4><h5 id="4-1-设置并开启防火墙。"><a href="#4-1-设置并开启防火墙。" class="headerlink" title="4.1 设置并开启防火墙。"></a>4.1 设置并开启防火墙。</h5><p>开启防火墙是有效的保障服务器安全的措施。</p>
+<h3 id="4-其他设置。"><a href="#4-其他设置。" class="headerlink" title="4. 其他设置。"></a>4. 其他设置。</h3><h4 id="4-1-设置并开启防火墙。"><a href="#4-1-设置并开启防火墙。" class="headerlink" title="4.1 设置并开启防火墙。"></a>4.1 设置并开启防火墙。</h4><p>开启防火墙是有效的保障服务器安全的措施。</p>
 <h5 id="4-1-1-将firewalld将入开机启动系列，并启动服务。"><a href="#4-1-1-将firewalld将入开机启动系列，并启动服务。" class="headerlink" title="4.1.1 将firewalld将入开机启动系列，并启动服务。"></a>4.1.1 将firewalld将入开机启动系列，并启动服务。</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable firewalld.service</span><br><span class="line">systemctl start firewalld.service</span><br></pre></td></tr></table></figure>
 <p>执行完屏幕上没什么特别提示。</p>
 <h5 id="4-1-2-将SSR与nginx的网站服务放行。（其中“6538”，如果你第3-3-2步改过，这里也要更改）"><a href="#4-1-2-将SSR与nginx的网站服务放行。（其中“6538”，如果你第3-3-2步改过，这里也要更改）" class="headerlink" title="4.1.2 将SSR与nginx的网站服务放行。（其中“6538”，如果你第3.3.2步改过，这里也要更改）"></a>4.1.2 将SSR与nginx的网站服务放行。（其中“6538”，如果你第3.3.2步改过，这里也要更改）</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --add-port=6538/tcp</span><br><span class="line">sudo firewall-cmd --permanent --add-port=6538/udp</span><br><span class="line">#将SSR使用的端口放行，允许客户端通过这个端口来与服务器端通讯</span><br><span class="line"></span><br><span class="line">sudo firewall-cmd --permanent --zone=public --add-service=http</span><br><span class="line">#允许http服务，即允许我们的服务器被当作网站访问。</span><br><span class="line"></span><br><span class="line">sudo firewall-cmd --reload</span><br><span class="line">#让防火墙重新加载（reload）一次，让刚才的修改生效。</span><br></pre></td></tr></table></figure>
@@ -567,18 +567,54 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/09/12/hello-world/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        
+                        <span class="card-title">Hello World</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-12
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            狂蝶
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
                 <a href="/2023/09/12/SSR%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SSR节点搭建">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">SSR节点搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -600,43 +636,6 @@
                     </div>
                 </div>
 
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/09/12/article-title/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="article title">
-                        
-                        <span class="card-title">article title</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            狂蝶
-                            
-                        </span>
-                    </div>
-                </div>
                 
             </div>
         </div>
